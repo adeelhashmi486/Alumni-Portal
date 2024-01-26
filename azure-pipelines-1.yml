@@ -8,21 +8,36 @@ pool:
   vmImage: 'ubuntu-latest'
 
 jobs:
+- job: MyJob
+  displayName: 'Sequential Job'
+  steps:
+  - script: echo "This is the first step of the job"
+    displayName: 'Step 1'
+
+  - script: echo "This is the second step of the job"
+    displayName: 'Step 2'
+
+  # Add additional steps as needed
+
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - script: echo This job runs sequentially without parallelism
+
 - job: RunRobotTests
   displayName: 'Run Robot Framework Tests'
   steps:
   - script: |
-      # Install Robot Framework and dependencies
-      pip install robotframework robotframework-seleniumlibrary
-      
-      # Install any additional dependencies from requirements.txt
-      pip install -r requirements.txt
+      # Install Python and pip
+      apt-get update
+      apt-get install -y python3-pip
 
-      # Install Chrome, Firefox, and Edge browsers
-      apt-get update && apt-get install -y \
-        chromium-browser \
-        firefox \
-        microsoft-edge-dev
+      # Install Robot Framework and SeleniumLibrary
+      pip3 install robotframework robotframework-seleniumlibrary
+
+      # Install browser drivers for Chrome, Firefox, and Edge
+      apt-get install -y chromium-browser firefox microsoft-edge-dev
 
       # Install Chrome WebDriver
       LATEST_CHROME_DRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
