@@ -1,5 +1,5 @@
 *** Settings ***
-Library            SeleniumLibrary
+Library           SeleniumLibrary
 *** Variables ***
 ${URL}            https://alumni.urraan.pk/     #URL of the Website
 ${Browser1}        Chrome       #Chrome Browser
