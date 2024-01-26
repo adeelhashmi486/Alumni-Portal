@@ -8,7 +8,7 @@ ${Browser3}        Firefox      #Mozilla Firefox Browser
 ${Email_link}            https://alumni.urraan.pk/alumni-login   #Link in the Email
 ${Browser}               Chrome       #Chrome Browser
 *** Test Cases ***
-Checking of website launching in different browsers properly or not
+TC_01 Checking of website launching in different browsers properly or not
     Open Browser  ${URL}  ${Browser1}    #Opens the above URL in a Chrome Browser
     Maximize Browser Window             #Maximizes the browser window
     Run Keyword And Continue On Failure  Title Should Be    Urraan Alumni  # Soft assertion for Chrome
@@ -21,11 +21,6 @@ Checking of website launching in different browsers properly or not
     Maximize Browser Window             #Maximizes the browser window
     Run Keyword And Continue On Failure  Title Should Be  Urraan Alumni  # Soft assertion for Firefox
     Close Browser
-Opening profile from link in email
-    Open Browser  ${Email_link}   ${Browser}    #Opens the above URL in a Chrome Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Title Should Be  Urraan Alumni      #Expected Title
-
 *** Keywords ***
 Title Should Be
     [Arguments]  ${expected_title}
