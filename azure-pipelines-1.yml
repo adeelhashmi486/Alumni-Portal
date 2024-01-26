@@ -1,0 +1,26 @@
+trigger:
+  branches:
+    include:
+      - main
+      - development
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: RunRobotTests
+  displayName: 'Run Robot Framework Tests'
+  steps:
+  - script: |
+      # Install Robot Framework and dependencies
+      pip install robotframework robotframework-seleniumlibrary
+      
+      # Install any additional dependencies from requirements.txt
+      pip install -r requirements.txt
+
+      # Install Chrome browser (if needed)
+      apt-get update && apt-get install -y chromium-browser
+      
+      # Run Robot Framework tests
+      robot your_test_suite.robot
+    displayName: 'Install Dependencies and Run Tests'
