@@ -13,7 +13,7 @@ TC_01 Checking of website launching in different browsers properly or not
     Maximize Browser Window             #Maximizes the browser window
     Run Keyword And Continue On Failure  Title Should Be    Urraan Alumni  # Soft assertion for Chrome
     Close Browser
-    Open Browser    ${URL}  ${Browser2}    #Opens the above URL in Edge Browser
+    Open Browser    ${URL}   ${Browser2}    #Opens the above URL in Edge Browser
     Maximize Browser Window             #Maximizes the browser window
     Run Keyword And Continue On Failure  Title Should Be    Urraan Alumni  # Soft assertion for Edge
     Close Browser
