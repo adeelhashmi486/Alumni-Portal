@@ -1,40 +1,22 @@
 *** Settings ***
-Library            SeleniumLibrary
-*** Variables ***
-${URL}            https://alumni.urraan.pk/     #URL of the Website
-${Browser1}        Chrome       #Chrome Browser
-${Browser2}        Edge         #MS Edge Browser
-${Browser3}        Firefox      #Mozilla Firefox Browser
-${Email_link}            https://alumni.urraan.pk/alumni-login   #Link in the Email
-${Browser}               Chrome       #Chrome Browser
-${Alumni_Login_Button}    xpath: //*[@href="/alumni-login"]
+Library           SeleniumLibrary
+Resource          common_resources.robot
 *** Test Cases ***
-TC_01 Checking of website launching in different browsers properly or not
-    Open Browser  ${URL}  ${Browser1}    #Opens the above URL in a Chrome Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Run Keyword And Continue On Failure  Title Should Be    Urraan Alumni  # Soft assertion for Chrome
-    Close Browser
-    Open Browser    ${URL}   ${Browser2}    #Opens the above URL in Edge Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Run Keyword And Continue On Failure  Title Should Be    Urraan Alumni  # Soft assertion for Edge
-    Close Browser
-    Open Browser  ${URL}  ${Browser3}    #Opens the above URL in Firefox Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Run Keyword And Continue On Failure  Title Should Be  Urraan Alumni  # Soft assertion for Firefox
-    Close Browser
+TC_01 Checking website launching in different browsers
+    Open Browser and Maximize Window  ${URL}  ${Browser1}                               #Opens the above URL in a Chrome Browser and Maximizes the window
+    Run Keyword And Continue On Failure  Title Should Be    ${Expected_result}          # Soft assertion for Chrome
+    Close Browser                                                                       #Teardown the browser
+
+    Open Browser and Maximize Window  ${URL}  ${Browser2}                               #Opens the above URL in a  Edge  Browser and Maximizes the window
+    Run Keyword And Continue On Failure  Title Should Be    ${Expected_result}          # Soft assertion for Edge
+    Close Browser                                                                       #Teardown the browser
+
+    Open Browser and Maximize Window  ${URL}  ${Browser3}                               #Opens the above URL in a Firefox Browser and Maximizes the window
+    Run Keyword And Continue On Failure  Title Should Be    ${Expected_result}          # Soft assertion for Firefox
+    Close Browser                                                                       #Teardown the browser
 TC_02 Opening profile from link in email
-    Open Browser  ${Email_link}   ${Browser}    #Opens the above URL in a Chrome Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Element Should Be Visible      //*[@type="submit"]    #when it goes on login page the input text field must be visible
+    Open Browser and Maximize Window  ${Email_link}  ${Browser}                         #Opens the above URL in a Chrome Browser and Maximizes the window
+    Element Should Be Visible      ${Login_Link_vrification}                            #when it goes on login page the input text field must be visible
 TC_04 Check Alumni Login button is working properly
-    Open Browser  ${URL}  ${Browser1}       #Opens the above URL in a Chrome Browser
-    Maximize Browser Window             #Maximizes the browser window
-    Wait Until Element Is Visible       ${Alumni_Login_Button}    #It will wait untill Alumni Login button is visible
-    Element Should Be Visible           ${Alumni_Login_Button}    # Soft assertion for Alumni Login button visibility
-    Click Element                       ${Alumni_Login_Button}    #Locator of the Alumni Login Button
-    Sleep           3 Seconds
-*** Keywords ***
-Title Should Be
-    [Arguments]  ${expected_title}
-    ${actual_title}=  Get Title     #Returns the title of the current page
-    Should Be Equal As Strings  ${actual_title}  ${expected_title}  #Actual and Expected titles should be same otherwise testcase got failed
+    Open Browser and Maximize Window  ${URL}  ${Browser1}                               #Opens the above URL in a Chrome Browser and Maximizes the window
+    Run Keyword  Check Alumni Login Button                                              #It will run the keyword Check Alumni login button
