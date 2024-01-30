@@ -7,6 +7,7 @@ ${Browser2}        Edge         #MS Edge Browser
 ${Browser3}        Firefox      #Mozilla Firefox Browser
 ${Email_link}            https://alumni.urraan.pk/alumni-login   #Link in the Email
 ${Browser}               Chrome       #Chrome Browser
+${Alumni_Login_Button}    xpath: //*[@href="/alumni-login"]
 *** Test Cases ***
 TC_01 Checking of website launching in different browsers properly or not
     Open Browser  ${URL}  ${Browser1}    #Opens the above URL in a Chrome Browser
@@ -25,6 +26,13 @@ TC_02 Opening profile from link in email
     Open Browser  ${Email_link}   ${Browser}    #Opens the above URL in a Chrome Browser
     Maximize Browser Window             #Maximizes the browser window
     Element Should Be Visible      //*[@type="submit"]    #when it goes on login page the input text field must be visible
+TC_04 Check Alumni Login button is working properly
+    Open Browser  ${URL}  ${Browser1}       #Opens the above URL in a Chrome Browser
+    Maximize Browser Window             #Maximizes the browser window
+    Wait Until Element Is Visible       ${Alumni_Login_Button}    #It will wait untill Alumni Login button is visible
+    Element Should Be Visible           ${Alumni_Login_Button}    # Soft assertion for Alumni Login button visibility
+    Click Element                       ${Alumni_Login_Button}    #Locator of the Alumni Login Button
+    Sleep           3 Seconds
 *** Keywords ***
 Title Should Be
     [Arguments]  ${expected_title}
