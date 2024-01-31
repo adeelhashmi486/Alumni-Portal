@@ -19,6 +19,8 @@ ${Invalid_email}                faizan.mehdi8545@gmail.com                      
 ${Invalid_password}             12345678                                        #Invalid password
 ${Valid_password}               Shehryargul998@                                 #Valid Password
 ${Basic_info}                   xpath://*[@id="navbarNav"]/div/span[1]          #Basic info button locator
+${Forgot_Password}              xpath://*[@href="/forgot-password"]             #Forgot Password button locator
+
 *** Keywords ***
 Title Should Be
     [Arguments]  ${expected_title}
