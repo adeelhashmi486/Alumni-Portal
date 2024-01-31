@@ -2,7 +2,7 @@
 Library            SeleniumLibrary
 
 *** Variables ***
-${URL}                          https://alumni.urraan.pk/                       #URL of the Website
+${URL}                          https://alumni.urraan.pk/                       #URL of the Websitee
 ${Browser1}                     Chrome                                          #Chrome Browser
 ${Browser2}                     Edge                                            #MS Edge Browser
 ${Browser3}                     Firefox                                         #Mozilla Firefox Browser

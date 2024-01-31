@@ -34,27 +34,27 @@ TC_05 Check Login functionality working properly or not
     Wait Until Element Is Visible            ${Toast_error}                                     #It will wait untill error window display
     Run Keyword And Continue On Failure    Element Should be visible      ${Toast_error}        #Soft assertion for without email and password login
 
-    # With Valid Email and Without Password
+    # Valid Email and Without Password
     Input Text       ${Email_input}      ${valid_email}                                         #Inputs a valid email in email input text
     Click Element    ${Login_button}                                                            #Clicks on login button
     Wait Until Element Is Visible            ${Toast_error}                                     #It will wait untill error window display
     Run Keyword And Continue On Failure    Element Should be visible       ${Toast_error}       #Soft assertion for valid email and without password login
 
-    # Invalid Login
+    # Invalid Email and Password
     Input Text       ${Email_input}        ${Invalid_email}                                     #Inputs an invalid email
     Input Text       ${Password_input}     ${Invalid_password}                                  #Inputs invalid password
     Click Element    ${Login_button}                                                            #Clicks on login button
     Wait Until Element Is Visible            ${Toast_error}                                     #It will wait untill error window display
     Run Keyword And Continue On Failure    Element Should be visible        ${Toast_error}      #Soft assertion for invalid email and invalid password login
 
-    # Invalid Password
+    # Invalid Password and valid Email
     Input Text       ${Email_input}          ${valid_email}                                     #Inputs an valid email
     Input Text       ${Password_input}       ${Invalid_password}                                #Inputs invalid password
     Click Element    ${Login_button}                                                            #Clicks on login button
     Wait Until Element Is Visible            ${Toast_error}                                     #It will wait untill error window display
     Run Keyword And Continue On Failure    Element Should be visible         ${Toast_error}     #Soft assertion for valid email and invalid password login
 
-    # Valid Login
+    # Valid Login of Profile
     Input Text       ${Email_input}           ${valid_email}                                    #Inputs an valid email
     Input Text       ${Password_input}        ${Valid_password}                                 #Inputs Valid password
     Click Element   ${Login_button}                                                             #Clicks on login button
