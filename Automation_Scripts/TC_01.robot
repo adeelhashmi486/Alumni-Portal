@@ -4,7 +4,7 @@ Library            Collections
 
 *** Variables ***
 ${URL}                                              https://alumni.urraan.pk/                                           #URL of the Websitee
-${Browser1}                                         headlessChrome                                                              #Chrome Browser
+${Browser1}                                         Chrome                                                              #Chrome Browser
 ${Browser2}                                         Edge                                                                #MS Edge Browser
 ${Browser3}                                         Firefox                                                             #Mozilla Firefox Browser
 ${Email_link}                                       https://alumni.urraan.pk/alumni-login                               #Link in the Email
